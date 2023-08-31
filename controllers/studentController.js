@@ -48,14 +48,14 @@ const studentController = {
             const userId = parseInt(req.params.studentId, 10);
 
             const exam = await Exam.findOne({
-                attributes: ["question_set"], // Select only the question_set
+                attributes: ["question_set"],
                 where: {
                     id: examId,
                 },
             });
 
             const answer = await Answer.findOne({
-                attributes: ["answers", "scores"], // Select only the answers and scores
+                attributes: ["answers", "scores"],
                 where: {
                     exam_id: examId,
                     user_id: userId,

@@ -13,6 +13,7 @@ const sequelize = require("./config/dbConfig");
 
 let app = express();
 
+// Middlewares
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: false }));

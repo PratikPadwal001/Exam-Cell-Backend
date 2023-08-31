@@ -7,8 +7,6 @@ const adminController = {
             const { username, password, first_name, last_name, email, role } =
                 req.body;
 
-            console.log(req.body);
-
             // Check if a user with the provided username or email already exists
             const existingUser = await User.findOne({
                 where: {

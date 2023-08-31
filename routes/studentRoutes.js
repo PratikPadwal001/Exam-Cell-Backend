@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const studentController = require("../controllers/studentController");
+
 // Get Exams
 router.get("/get-exams/:studentId", studentController.getExams);
 

@@ -40,8 +40,6 @@ const instructorController = {
     evaluateSheets: async (req, res) => {
         try {
             const examId = parseInt(req.params.examId, 10);
-
-            // Retrieve student_enlisted and question_set from exams table
             const exam = await Exam.findOne({
                 attributes: ["students_enlisted", "question_set"],
                 where: {
@@ -49,7 +47,6 @@ const instructorController = {
                 },
             });
 
-            // Retrieve answers and scores for all student IDs present in students_enlisted
             const studentIds = exam.students_enlisted;
             const answers = await Answer.findAll({
                 attributes: ["user_id", "answers", "scores"],
@@ -73,9 +70,6 @@ const instructorController = {
             const userId = parseInt(req.params.userId, 10);
             const { newScores } = req.body;
 
-            console.log(req.body);
-
-            // Update the scores for the given exam ID and user ID
             const updatedAnswer = await Answer.update(
                 { scores: newScores, check_status: true },
                 {
